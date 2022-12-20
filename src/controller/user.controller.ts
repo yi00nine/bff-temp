@@ -11,9 +11,7 @@ export class UserController {
     method: "post",
   })
   async login(ctx) {
-    console.log("login");
     const res = await this.userSrv.login();
-    console.log(res);
     ctx.body = {
       code: 0,
       data: res,

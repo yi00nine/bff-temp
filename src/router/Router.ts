@@ -19,14 +19,12 @@ export class Route {
   }
 
   registerRouters() {
-    console.log(Route._DecorateRouter);
     for (let [config, controller] of Route._DecorateRouter) {
       let prefix: string = config.target[symbolRoutePrefix];
       if (prefix && !prefix.startsWith("/")) {
         prefix = "/" + prefix;
       }
       let routePath = (prefix || "") + config.path;
-      console.log(routePath, config.method);
       this.router[config.method](routePath, controller);
     }
     this.app.use(this.router.routes());
